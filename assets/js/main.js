@@ -40,18 +40,19 @@ function scrollHeader(){
 window.addEventListener('scroll',scrollHeader)
 
 /*==================== SWIPER DISCOVER ====================*/
-let swiper = new Swiper(".discover__container", {
+
+var swiper = new Swiper(".discover__container ", {
     effect: "coverflow",
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: "auto",
-    loop: true,
-    spaceBetween: 32,
+    loop:true,
+    spaceBetween:32,
     coverflowEffect: {
-        rotate: 0,
+      rotate: 0, 
+      slideShadows: true,
     },
-})
-
+  });
 /*==================== VIDEO ====================*/
 const videoFile = document.getElementById('video-file'),
       videoButton = document.getElementById('video-button'),
@@ -89,7 +90,8 @@ videoFile.addEventListener('ended', finalVideo)
 function scrollUp(){
     const scrollUp = document.getElementById('scroll-up');
     // When the scroll is higher than 200 viewport height, add the show-scroll class to the a tag with the scroll-top class
-    if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); else scrollUp.classList.remove('show-scroll')
+    if(this.scrollY >= 200) scrollUp.classList.add('show-scroll'); 
+    else scrollUp.classList.remove('show-scroll')
 }
 window.addEventListener('scroll', scrollUp)
 
@@ -153,6 +155,7 @@ const iconTheme = 'ri-sun-line'
 const selectedTheme = localStorage.getItem('selected-theme')
 const selectedIcon = localStorage.getItem('selected-icon')
 
+
 // We obtain the current theme that the interface has by validating the dark-theme class
 const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
 const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line'
@@ -174,14 +177,15 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
-
-/*=============== CONTENT TEMPLATE =============================*/
-const init = async () => {
-	const config = await (await fetch('assets/js/config.json')).json();
-	let newHTML = document.documentElement.innerHTML;
-	Object.keys(config).map((key) => {
-		newHTML = newHTML.replace(key, config[key]);
-	});
-	document.documentElement.innerHTML = newHTML;
-};
-init();
+/*por algún motivo se rompe la página con este script para el contenido
+en español en el json*/
+            /*=============== CONTENT TEMPLATE =============================*/
+            // const init = async () => {
+            //     const config = await (await fetch('assets/js/config.json')).json();
+            //     let newHTML = document.documentElement.innerHTML;
+            //     Object.keys(config).map((key) => {
+            //         newHTML = newHTML.replace(key, config[key]);
+            //     });
+            //     document.documentElement.innerHTML = newHTML;
+            // };
+            // init();

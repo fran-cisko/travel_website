@@ -94,6 +94,7 @@ body.dark-theme {
 
 .change-theme, .change-theme-name {
   color: var(--text-color);
+  font-size: var(--small-font-size);
 }
 
 .change-theme {
@@ -101,9 +102,16 @@ body.dark-theme {
   font-size: 1rem;
 }
 
-.change-theme-name {
-  font-size: var(--small-font-size);
+
+.change-theme-name--dark:before{
+  content: "Ligth ";
+
 }
+.change-theme-name--light:before{
+  content: "Dark ";
+
+}
+
 
 /*=============== BASE ===============*/
 * {
@@ -260,6 +268,7 @@ input {
   color: var(--title-color);
   cursor: pointer;
 }
+
 
 /* show menu */
 .show-menu {
